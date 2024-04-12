@@ -2,17 +2,17 @@
 package Entidades;
 
 
-public class Producto implements Comparable<Producto> {
-    private int codigo;
+public class Producto {
+    private Integer codigo;
     private String descripcion;
-    private double precio;
+    private Double precio;
     private Rubro rubro;
-    private int stock;
+    private Integer stock;
 
     public Producto() {
     }
 
-    public Producto(int codigo, String descripcion, double precio, Rubro rubro, int stock) {
+    public Producto(Integer codigo, String descripcion, Double precio, Rubro rubro, Integer stock) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -20,11 +20,11 @@ public class Producto implements Comparable<Producto> {
         this.stock = stock;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
@@ -36,11 +36,11 @@ public class Producto implements Comparable<Producto> {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
@@ -52,32 +52,15 @@ public class Producto implements Comparable<Producto> {
         this.rubro = rubro;
     }
 
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
     @Override
-    public int compareTo(Producto t) {
-        //0-->iguales
-        //1-->mayor
-        //-1-->menor
-        if(this.codigo==t.codigo){
-            
-            return 0;
-            
-        }else if(this.codigo >t.codigo){
-        
-            return 1;
-        }else {
-        
-            return -1;
-        }
-    }
-
    public String toString(){
    
        return codigo+" "+descripcion;
