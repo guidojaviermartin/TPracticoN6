@@ -1,5 +1,5 @@
 
-package tp6com2.entidades;
+package Entidades;
 
 
 public class Rubro {

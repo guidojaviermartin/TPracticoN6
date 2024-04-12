@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package tp6com2.vistas;
+package Vistas;
 
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import tp6com2.entidades.Producto;
-import tp6com2.entidades.Rubro;
+import Entidades.Producto;
+import Entidades.Rubro;
 
 /**
  *

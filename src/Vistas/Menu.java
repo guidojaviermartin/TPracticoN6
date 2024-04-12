@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Vistas;
 
-/**
- *
- * @author Javier
- */
-public class Menu extends javax.swing.JFrame {
+import java.util.TreeSet;
+import Entidades.Producto;
 
+
+public class Menu extends javax.swing.JFrame {
+private TreeSet<Producto> productos=new TreeSet<>();
     /**
      * Creates new form Menu
      */
@@ -26,99 +23,82 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        escritorio = new javax.swing.JDesktopPane();
+        jmMenuGeneral = new javax.swing.JMenuBar();
         jmAdministracion = new javax.swing.JMenu();
-        jmProductos = new javax.swing.JMenuItem();
+        jmiProductos = new javax.swing.JMenuItem();
         jmConsultas = new javax.swing.JMenu();
-        jmRubro = new javax.swing.JMenuItem();
-        jmNombre = new javax.swing.JMenuItem();
-        jmPrecio = new javax.swing.JMenuItem();
+        jmiRubro = new javax.swing.JMenuItem();
+        jmiNombre = new javax.swing.JMenuItem();
+        jmiPrecio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(500, 400));
+        setSize(new java.awt.Dimension(500, 400));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
         );
 
         jmAdministracion.setText("Administración");
-        jmAdministracion.addActionListener(new java.awt.event.ActionListener() {
+
+        jmiProductos.setText("Productos");
+        jmiProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmAdministracionActionPerformed(evt);
+                jmiProductosActionPerformed(evt);
             }
         });
+        jmAdministracion.add(jmiProductos);
 
-        jmProductos.setText("Productos");
-        jmAdministracion.add(jmProductos);
-
-        jMenuBar1.add(jmAdministracion);
+        jmMenuGeneral.add(jmAdministracion);
 
         jmConsultas.setText("Consultas");
 
-        jmRubro.setText("Por Rubro");
-        jmRubro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmRubroActionPerformed(evt);
-            }
-        });
-        jmConsultas.add(jmRubro);
+        jmiRubro.setText("Por Rubro");
+        jmConsultas.add(jmiRubro);
 
-        jmNombre.setText("Por Nombre");
-        jmNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmNombreActionPerformed(evt);
-            }
-        });
-        jmConsultas.add(jmNombre);
+        jmiNombre.setText("Por Nombre");
+        jmConsultas.add(jmiNombre);
 
-        jmPrecio.setText("Por Precio");
-        jmPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmPrecioActionPerformed(evt);
-            }
-        });
-        jmConsultas.add(jmPrecio);
+        jmiPrecio.setText("Por Precio");
+        jmConsultas.add(jmiPrecio);
 
-        jMenuBar1.add(jmConsultas);
+        jmMenuGeneral.add(jmConsultas);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jmMenuGeneral);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAdministracionActionPerformed
+    private void jmiProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jmAdministracionActionPerformed
-
-    private void jmRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmRubroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmRubroActionPerformed
-
-    private void jmNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmNombreActionPerformed
-
-    private void jmPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmPrecioActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        gestionDeProductos gdp=new gestionDeProductos(productos);
+        gdp.setVisible(true);
+        escritorio.add(gdp);
+        
+        
+    }//GEN-LAST:event_jmiProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,13 +136,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jmAdministracion;
     private javax.swing.JMenu jmConsultas;
-    private javax.swing.JMenuItem jmNombre;
-    private javax.swing.JMenuItem jmPrecio;
-    private javax.swing.JMenuItem jmProductos;
-    private javax.swing.JMenuItem jmRubro;
+    private javax.swing.JMenuBar jmMenuGeneral;
+    private javax.swing.JMenuItem jmiNombre;
+    private javax.swing.JMenuItem jmiPrecio;
+    private javax.swing.JMenuItem jmiProductos;
+    private javax.swing.JMenuItem jmiRubro;
     // End of variables declaration//GEN-END:variables
 }
