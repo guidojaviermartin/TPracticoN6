@@ -107,6 +107,11 @@ private TreeSet<Producto> productos=new TreeSet<>();
 
     private void jmiRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRubroActionPerformed
         // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        PorRubro lpr = new PorRubro(productos);
+        lpr.setVisible(true);
+        escritorio.add(lpr);
     }//GEN-LAST:event_jmiRubroActionPerformed
 
     /**

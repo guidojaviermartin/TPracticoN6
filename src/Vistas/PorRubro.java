@@ -4,18 +4,26 @@
  */
 package Vistas;
 
+import Entidades.Producto;
+import java.util.TreeSet;
+
 /**
  *
  * @author Javier
  */
 public class PorRubro extends javax.swing.JInternalFrame {
 
+    private TreeSet<Producto> productos;
+
     /**
      * Creates new form PorRubro
      */
-    public PorRubro() {
+    public PorRubro(TreeSet<Producto> productos) {
         initComponents();
+        this.productos=productos;
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -2,7 +2,7 @@
 package Entidades;
 
 
-public class Rubro {
+public class Rubro implements Comparable<Producto> {
     private int codigo;
     private String nombre;
 
@@ -33,5 +33,10 @@ public class Rubro {
     public String toString(){
     
         return nombre;
+    }
+
+    @Override
+    public int compareTo(Producto t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
