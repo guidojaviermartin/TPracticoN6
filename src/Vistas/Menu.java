@@ -63,6 +63,11 @@ private TreeSet<Producto> productos=new TreeSet<>();
         jmConsultas.setText("Consultas");
 
         jmiRubro.setText("Por Rubro");
+        jmiRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiRubroActionPerformed(evt);
+            }
+        });
         jmConsultas.add(jmiRubro);
 
         jmiNombre.setText("Por Nombre");
@@ -99,6 +104,10 @@ private TreeSet<Producto> productos=new TreeSet<>();
         
         
     }//GEN-LAST:event_jmiProductosActionPerformed
+
+    private void jmiRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiRubroActionPerformed
 
     /**
      * @param args the command line arguments
