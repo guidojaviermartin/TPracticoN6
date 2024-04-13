@@ -83,6 +83,11 @@ private TreeSet<Producto> productos=new TreeSet<>();
         jmConsultas.add(jmiRubro);
 
         jmiNombre.setText("Por Nombre");
+        jmiNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiNombreActionPerformed(evt);
+            }
+        });
         jmConsultas.add(jmiNombre);
 
         jmiPrecio.setText("Por Precio");
@@ -125,6 +130,14 @@ private TreeSet<Producto> productos=new TreeSet<>();
         lpr.setVisible(true);
         escritorio.add(lpr);
     }//GEN-LAST:event_jmiRubroActionPerformed
+
+    private void jmiNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNombreActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListadoNombre lpn = new ListadoNombre(productos);
+        lpn.setVisible(true);
+        escritorio.add(lpn);        // TODO add your handling code here:
+    }//GEN-LAST:event_jmiNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -44,6 +44,7 @@ private DefaultTableModel modelo=new DefaultTableModel();
         jlListadoNombre = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(102, 102, 102));
+        setClosable(true);
 
         jlPrimerosCaracteres.setBackground(new java.awt.Color(255, 255, 255));
         jlPrimerosCaracteres.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
