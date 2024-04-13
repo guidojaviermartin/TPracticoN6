@@ -3,6 +3,9 @@ package Vistas;
 
 import java.util.TreeSet;
 import Entidades.Producto;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 
 public class Menu extends javax.swing.JFrame {
@@ -23,7 +26,13 @@ private TreeSet<Producto> productos=new TreeSet<>();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        escritorio = new javax.swing.JDesktopPane();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"));
+        Image image = icon.getImage();
+        escritorio = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(image,0,0,getWidth(),getHeight(),this);
+            }
+        };
         jmMenuGeneral = new javax.swing.JMenuBar();
         jmAdministracion = new javax.swing.JMenu();
         jmiProductos = new javax.swing.JMenuItem();
@@ -36,6 +45,8 @@ private TreeSet<Producto> productos=new TreeSet<>();
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(500, 400));
         setSize(new java.awt.Dimension(500, 400));
+
+        escritorio.setPreferredSize(new java.awt.Dimension(665, 460));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
