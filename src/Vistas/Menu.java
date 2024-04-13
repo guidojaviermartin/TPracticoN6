@@ -13,10 +13,11 @@ private TreeSet<Producto> productos=new TreeSet<>();
     /**
      * Creates new form Menu
      */
+
     public Menu() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,7 +152,7 @@ private TreeSet<Producto> productos=new TreeSet<>();
             java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
