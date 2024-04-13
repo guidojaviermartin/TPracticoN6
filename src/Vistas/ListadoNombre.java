@@ -56,7 +56,6 @@ private DefaultTableModel modelo=new DefaultTableModel();
             }
         });
 
-        jtTabla.setBackground(new java.awt.Color(204, 204, 255));
         jtTabla.setForeground(new java.awt.Color(0, 51, 255));
         jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,23 +81,23 @@ private DefaultTableModel modelo=new DefaultTableModel();
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jlListadoNombre.setBackground(new java.awt.Color(255, 255, 255));
-        jlListadoNombre.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jlListadoNombre.setText("Listado Por Nombre");
+        jlListadoNombre.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlListadoNombre.setText("Listado por Nombre");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(20, 20, 20)
                 .addComponent(jlListadoNombre)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jlListadoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlListadoNombre)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
@@ -132,7 +131,7 @@ private DefaultTableModel modelo=new DefaultTableModel();
                     .addComponent(jlPrimerosCaracteres))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();

@@ -4,17 +4,21 @@
  */
 package Vistas;
 
+import Entidades.Producto;
+import java.util.TreeSet;
+
 /**
  *
  * @author Cristian
  */
 public class PorPrecio extends javax.swing.JInternalFrame {
-
+    private TreeSet<Producto> productos;
     /**
      * Creates new form PorPrecio
      */
-    public PorPrecio() {
+    public PorPrecio(TreeSet<Producto> productos) {
         initComponents();
+        this.productos=productos;
     }
 
     /**
@@ -35,6 +39,8 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+
+        setClosable(true);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
