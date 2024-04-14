@@ -166,6 +166,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtCodigo">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: 1234"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtCodigoKeyTyped"/>
       </Events>
@@ -173,12 +176,18 @@
     <Component class="javax.swing.JTextField" name="jtDescripcion">
     </Component>
     <Component class="javax.swing.JTextField" name="jtPrecio">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: 1234.12"/>
+      </Properties>
       <Events>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtPrecioKeyReleased"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtPrecioKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jtStock">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="Ej: 1234"/>
+      </Properties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtStockKeyTyped"/>
       </Events>

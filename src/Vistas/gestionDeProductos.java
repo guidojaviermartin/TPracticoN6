@@ -56,12 +56,14 @@ public gestionDeProductos(TreeSet<Producto> lista) {
         jLabel5.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
         jLabel5.setText("Codigo");
 
+        jtCodigo.setToolTipText("Ej: 1234");
         jtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtCodigoKeyTyped(evt);
             }
         });
 
+        jtPrecio.setToolTipText("Ej: 1234.12");
         jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtPrecioKeyReleased(evt);
@@ -71,6 +73,7 @@ public gestionDeProductos(TreeSet<Producto> lista) {
             }
         });
 
+        jtStock.setToolTipText("Ej: 1234");
         jtStock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtStockKeyTyped(evt);
