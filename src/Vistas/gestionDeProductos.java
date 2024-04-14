@@ -345,10 +345,10 @@ public gestionDeProductos(TreeSet<Producto> lista) {
         Rubro comestible=new Rubro(1,"Comestible");
         Rubro limpieza=new Rubro(2,"Limpieza");
         Rubro perfumeria=new Rubro(3,"Perfumeria");
-        
         jcRubros.addItem(comestible);
         jcRubros.addItem(limpieza);
         jcRubros.addItem(perfumeria);        
+        jcRubros.setSelectedIndex(-1);
     }
 
     private void limpiar(){    
