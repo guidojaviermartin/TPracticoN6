@@ -84,11 +84,6 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jLabel2.setText("Entre");
 
         jtDesde.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
-        jtDesde.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtDesdeKeyReleased(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jLabel3.setText("y");
@@ -166,46 +161,25 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtDesdeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDesdeKeyReleased
-        borrarFilas();
-        if (jtDesde.getText().isEmpty()) {
-            borrarFilas();
-        }else{
-        double compPrecio=Double.parseDouble(jtDesde.getText());
-        for (Producto prod : productos) {
-            if (prod.getPrecio()>=compPrecio) {
-                Vector renglon=new Vector();
-                renglon.add(prod.getCodigo());
-                renglon.add(prod.getDescripcion());
-                renglon.add(prod.getPrecio());
-                renglon.add(prod.getStock());
-                renglon.add(prod.getRubro());
-                modelo.addRow(renglon);
-                System.out.println(renglon);
-            }
-        }
-        }
-    }//GEN-LAST:event_jtDesdeKeyReleased
-
     private void jtHastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtHastaKeyReleased
-        borrarFilas();
-        borrarFilas();
+
         if (jtHasta.getText().isEmpty()) {
             borrarFilas();
         }else{
-        double compPrecio=Double.parseDouble(jtHasta.getText());
-        for (Producto prod : productos) {
-            if (prod.getPrecio()>=compPrecio) {
-                Vector renglon=new Vector();
-                renglon.add(prod.getCodigo());
-                renglon.add(prod.getDescripcion());
-                renglon.add(prod.getPrecio());
-                renglon.add(prod.getStock());
-                renglon.add(prod.getRubro());
-                modelo.addRow(renglon);
-                System.out.println(renglon);
+        double minPrecio = Double.parseDouble(jtDesde.getText());
+        double maxPrecio=Double.parseDouble(jtHasta.getText());
+            for (Producto prod : productos) {
+                if ((prod.getPrecio()<=maxPrecio) && (prod.getPrecio() >= minPrecio)) {
+                    Vector renglon=new Vector();
+                    renglon.add(prod.getCodigo());
+                    renglon.add(prod.getDescripcion());
+                    renglon.add(prod.getPrecio());
+                    renglon.add(prod.getStock());
+                    renglon.add(prod.getRubro());
+                    modelo.addRow(renglon);
+
+                }
             }
-        }
         }
     }//GEN-LAST:event_jtHastaKeyReleased
 
