@@ -51,8 +51,6 @@ private Producto auxiliar=null;
 
         jButton1.setText("jButton1");
 
-        setClosable(true);
-
         jLabel1.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
         jLabel1.setText("Descripcion");
 
@@ -209,13 +207,13 @@ private Producto auxiliar=null;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbGuardar)
                     .addComponent(jbEliminar)
                     .addComponent(jbSalir))
-                .addGap(53, 53, 53))
+                .addGap(40, 40, 40))
         );
 
         pack();

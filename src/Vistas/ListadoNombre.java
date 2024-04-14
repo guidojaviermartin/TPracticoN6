@@ -2,7 +2,6 @@
 package Vistas;
 
 import Entidades.Producto;
-import java.awt.Color;
 import java.util.TreeSet;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;

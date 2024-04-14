@@ -1,8 +1,10 @@
 
 package Entidades;
 
+import java.util.Objects;
 
-public class Rubro implements Comparable<Producto> {
+
+public class Rubro {
     private int codigo;
     private String nombre;
 
@@ -36,7 +38,26 @@ public class Rubro implements Comparable<Producto> {
     }
 
     @Override
-    public int compareTo(Producto t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.nombre);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Rubro other = (Rubro) obj;
+        return Objects.equals(this.nombre, other.nombre);
+    }
+
+    
 }
