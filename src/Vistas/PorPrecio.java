@@ -2,17 +2,40 @@
 package Vistas;
 
 import Entidades.Producto;
+import Entidades.Rubro;
 import java.util.TreeSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 public class PorPrecio extends javax.swing.JInternalFrame {
     private TreeSet<Producto> productos;
+    private DefaultTableModel modelo=new DefaultTableModel();
     /**
      * Creates new form PorPrecio
      */
     public PorPrecio(TreeSet<Producto> productos) {
         initComponents();
         this.productos=productos;
+        armarCabecera();
     }
+    
+     private void armarCabecera(){
+       
+         modelo.addColumn("Codigo");
+         modelo.addColumn("Descripcion");
+         modelo.addColumn("Precio");
+         modelo.addColumn("Stock");
+         jtTabla.setModel(modelo);
+     }
+     
+     private void borrarFilas(){
+     
+         int filas=modelo.getRowCount()-1;
+         for(int f=filas;f >= 0;f--){
+         
+             modelo.removeRow(f);
+         }
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,12 +49,12 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtDesde = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtTabla = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jtHasta = new javax.swing.JTextField();
 
         setClosable(true);
 
@@ -60,16 +83,17 @@ public class PorPrecio extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jLabel2.setText("Entre");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jtDesde.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jtDesde.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtDesdeKeyReleased(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Bell MT", 1, 14)); // NOI18N
         jLabel3.setText("y");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,13 +104,14 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                 "Codigo", "Descripción", "Precio", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtTabla);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/svg.png"))); // NOI18N
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        jtHasta.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
+        jtHasta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtHastaKeyReleased(evt);
             }
         });
 
@@ -106,11 +131,11 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -125,9 +150,9 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, Short.MAX_VALUE)
+                            .addComponent(jtDesde, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, Short.MAX_VALUE))
+                            .addComponent(jtHasta))
                         .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,19 +160,45 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jtDesdeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDesdeKeyReleased
+        borrarFilas();
+        double compPrecio=Double.parseDouble(jtDesde.getText());
+        for (Producto prod : productos) {
+            if (prod.getPrecio()>=compPrecio) {
+                Vector renglon=new Vector();
+                renglon.add(prod.getCodigo());
+                renglon.add(prod.getDescripcion());
+                renglon.add(prod.getPrecio());
+                renglon.add(prod.getStock());
+                renglon.add(prod.getRubro());
+                modelo.addRow(renglon);
+                System.out.println(renglon);
+            }
+        }
+    }//GEN-LAST:event_jtDesdeKeyReleased
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void jtHastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtHastaKeyReleased
+        borrarFilas();
+        double compPrecio=Double.parseDouble(jtHasta.getText());
+        for (Producto prod : productos) {
+            if (prod.getPrecio()<=compPrecio) {
+                Vector renglon=new Vector();
+                renglon.add(prod.getCodigo());
+                renglon.add(prod.getDescripcion());
+                renglon.add(prod.getPrecio());
+                renglon.add(prod.getStock());
+                renglon.add(prod.getRubro());
+                modelo.addRow(renglon);
+                System.out.println(renglon);
+            }
+        }
+    }//GEN-LAST:event_jtHastaKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -157,8 +208,8 @@ public class PorPrecio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jtDesde;
+    private javax.swing.JTextField jtHasta;
+    private javax.swing.JTable jtTabla;
     // End of variables declaration//GEN-END:variables
 }
