@@ -168,6 +168,9 @@ public class PorPrecio extends javax.swing.JInternalFrame {
 
     private void jtDesdeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtDesdeKeyReleased
         borrarFilas();
+        if (jtDesde.getText().isEmpty()) {
+            borrarFilas();
+        }else{
         double compPrecio=Double.parseDouble(jtDesde.getText());
         for (Producto prod : productos) {
             if (prod.getPrecio()>=compPrecio) {
@@ -181,13 +184,18 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                 System.out.println(renglon);
             }
         }
+        }
     }//GEN-LAST:event_jtDesdeKeyReleased
 
     private void jtHastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtHastaKeyReleased
         borrarFilas();
+        borrarFilas();
+        if (jtHasta.getText().isEmpty()) {
+            borrarFilas();
+        }else{
         double compPrecio=Double.parseDouble(jtHasta.getText());
         for (Producto prod : productos) {
-            if (prod.getPrecio()<=compPrecio) {
+            if (prod.getPrecio()>=compPrecio) {
                 Vector renglon=new Vector();
                 renglon.add(prod.getCodigo());
                 renglon.add(prod.getDescripcion());
@@ -197,6 +205,7 @@ public class PorPrecio extends javax.swing.JInternalFrame {
                 modelo.addRow(renglon);
                 System.out.println(renglon);
             }
+        }
         }
     }//GEN-LAST:event_jtHastaKeyReleased
 
