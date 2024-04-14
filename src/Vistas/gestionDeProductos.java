@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vistas;
 
 import java.util.TreeSet;
@@ -11,10 +8,7 @@ import javax.swing.JOptionPane;
 import Entidades.Producto;
 import Entidades.Rubro;
 
-/**
- *
- * @author Hollmann
- */
+
 public class gestionDeProductos extends javax.swing.JInternalFrame {
 private TreeSet<Producto> productos;
 private Producto auxiliar=null;
@@ -63,16 +57,22 @@ private Producto auxiliar=null;
         jLabel1.setText("Descripcion");
 
         jLabel2.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
-        jLabel2.setText("Rubro");
+        jLabel2.setText("Stock");
 
         jLabel3.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
         jLabel3.setText("Precio");
 
         jLabel4.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
-        jLabel4.setText("Stock");
+        jLabel4.setText("Rubro");
 
         jLabel5.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
         jLabel5.setText("Codigo");
+
+        jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtPrecioKeyTyped(evt);
+            }
+        });
 
         jbNuevo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jbNuevo.setText("Nuevo");
@@ -271,7 +271,7 @@ private Producto auxiliar=null;
             codigo = Integer.parseInt(jtCodigo.getText());
         }else {
         
-            JOptionPane.showMessageDialog(this, "Ingresar un nro ");
+            JOptionPane.showMessageDialog(this, "Ingresar un nro en codigo");
             jtCodigo.requestFocus();
             return;
         }
@@ -280,20 +280,11 @@ private Producto auxiliar=null;
             stock = Integer.parseInt(jtStock.getText());
         }else {
         
-            JOptionPane.showMessageDialog(this, "Ingresar un nro ");
+            JOptionPane.showMessageDialog(this, "Ingresar un nro en stock");
             jtStock.requestFocus();
             return;
         }
-        
-        if(validaReal(jtPrecio.getText())){
-            precio = Double.parseDouble(jtPrecio.getText());
-        }else {
-        
-            JOptionPane.showMessageDialog(this, "Ingresar un nro ");
-            jtPrecio.requestFocus();
-            return;
-        }
-        
+               
         if(!jtDescripcion.getText().isEmpty()){
         
             descripcion = jtDescripcion.getText();
@@ -302,11 +293,26 @@ private Producto auxiliar=null;
             jtDescripcion.requestFocus();
             return;
         }
-         
-         
+        try{
+            if(jtPrecio.getText().isEmpty()){ //controla el ingreso de precio
+
+                JOptionPane.showMessageDialog(this, "El campo 'precio' no debe estar vacio");
+                jtPrecio.requestFocus();
+                return;
+            }else{
+                precio = Double.parseDouble(jtPrecio.getText()); 
+            }
+        } catch (NumberFormatException | ClassCastException e) {
+            JOptionPane.showMessageDialog(this, "Ingresar un número válido en precio");
+            jtPrecio.requestFocus();
+            return;
+        }
+        
+        
        rubro = (Rubro)jcRubros.getSelectedItem();
       
        Producto nvoProd=new Producto(codigo,descripcion,precio,rubro,stock);
+       
        if(productos.add(nvoProd)){
            JOptionPane.showMessageDialog(this, "Producto Agregado");
            limpiar();
@@ -338,6 +344,15 @@ private Producto auxiliar=null;
       
     }//GEN-LAST:event_jbEliminarActionPerformed
 
+    private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
+        // TODO add your handling code here:
+            if(!Character.isDigit(evt.getKeyChar()) && !(evt.getKeyChar() == '.')){
+            evt.consume();
+        }
+            
+        
+    }//GEN-LAST:event_jtPrecioKeyTyped
+
     private void llenarCombo(){
     
         Rubro comestible=new Rubro(1,"Comestible");
@@ -357,12 +372,12 @@ private Producto auxiliar=null;
         return m.matches();
     }
 
-    private boolean validaReal(String nro){
-    Pattern patron=Pattern.compile("^[0-9]+.[0-9]{2}$");
-        Matcher m=patron.matcher(nro);
-        return m.matches();
-        
-    }
+//    private boolean validaReal(String nro){
+//    Pattern patron=Pattern.compile("^[0-9]+.[0-9]{2}$");
+//        Matcher m=patron.matcher(nro);
+//        return m.matches();
+//        
+//    }
     
     private void limpiar(){
     

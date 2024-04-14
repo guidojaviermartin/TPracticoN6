@@ -2,7 +2,7 @@
 package Entidades;
 
 
-public class Producto {
+public class Producto implements Comparable<Producto>{
     private Integer codigo;
     private String descripcion;
     private Double precio;
@@ -65,6 +65,10 @@ public class Producto {
    
        return codigo+" "+descripcion;
    }
-    
-    
+
+    @Override
+    public int compareTo(Producto otroProducto) {
+
+        return Integer.compare(this.codigo, otroProducto.getCodigo());
+    }
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vistas;
 
 import Entidades.Producto;
@@ -11,10 +8,6 @@ import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 
-/**
- *
- * @author tDev
- */
 public class ListadoNombre extends javax.swing.JInternalFrame {
 private TreeSet<Producto> productos;
 private DefaultTableModel modelo=new DefaultTableModel();
@@ -172,14 +165,14 @@ private DefaultTableModel modelo=new DefaultTableModel();
          jtTabla.setModel(modelo);
      }
      
-     private void borrarFilas(){
+ private void borrarFilas(){
      
          int filas=modelo.getRowCount()-1;
          for(int f=filas;f >= 0;f--){
          
              modelo.removeRow(f);
          }
-     }
+ }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
