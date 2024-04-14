@@ -1,12 +1,10 @@
 package Vistas;
 
 import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import Entidades.Producto;
 import Entidades.Rubro;
-import static java.awt.Color.red;
+import static java.awt.Color.*;
 
 public class gestionDeProductos extends javax.swing.JInternalFrame {
 private TreeSet<Producto> listaProductos;
@@ -58,15 +56,24 @@ public gestionDeProductos(TreeSet<Producto> lista) {
         jLabel5.setFont(new java.awt.Font("Sitka Heading", 0, 14)); // NOI18N
         jLabel5.setText("Codigo");
 
-        jtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtCodigoActionPerformed(evt);
+        jtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtCodigoKeyTyped(evt);
             }
         });
 
         jtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtPrecioKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtPrecioKeyTyped(evt);
+            }
+        });
+
+        jtStock.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtStockKeyTyped(evt);
             }
         });
 
@@ -224,31 +231,23 @@ public gestionDeProductos(TreeSet<Producto> lista) {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         int codigo;
         if(!jtCodigo.getText().isEmpty()){            
-                if(validaEntero(jtCodigo.getText())){
-                    codigo = Integer.parseInt(jtCodigo.getText());
-                }else {
+            codigo = Integer.parseInt(jtCodigo.getText());
 
-                    JOptionPane.showMessageDialog(this, "Ingresar un nro ");
-                    jtCodigo.requestFocus();
+            for(Producto prod:listaProductos){
+                if(codigo==prod.getCodigo()){            
+                    jtDescripcion.setText(prod.getDescripcion());
+                    jtPrecio.setText(prod.getPrecio()+"");
+                    jtStock.setText(prod.getStock()+"");
+                    jcRubros.setSelectedItem(prod.getRubro());
+                    jbEliminar.setEnabled(true);
+                    auxiliar=prod;
                     return;
                 }
-
-                for(Producto prod:listaProductos){
-                    if(codigo==prod.getCodigo()){            
-                        jtDescripcion.setText(prod.getDescripcion());
-                        jtPrecio.setText(prod.getPrecio()+"");
-                        jtStock.setText(prod.getStock()+"");
-                        jcRubros.setSelectedItem(prod.getRubro());
-                        jbEliminar.setEnabled(true);
-                        auxiliar=prod;
-                        return;
-                    }
-                }        
-                JOptionPane.showMessageDialog(this, "Codigo inexistente");
+            }        
+            JOptionPane.showMessageDialog(this, "Codigo inexistente");
         }else{
             JOptionPane.showMessageDialog(this, "Ingrese un código");
         }
-        limpiar();
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -275,75 +274,47 @@ public gestionDeProductos(TreeSet<Producto> lista) {
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
-        // TODO add your handling code here:
         limpiar();
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
-         
-                int opcion=JOptionPane.showConfirmDialog(this, "Confirma Eliminación S/N", "Confirmación",JOptionPane.YES_NO_OPTION);
-                if(opcion==JOptionPane.YES_OPTION){
-                    listaProductos.remove(auxiliar);
-                    JOptionPane.showMessageDialog(this, "Producto Eliminado ");
-                    limpiar();
-                    auxiliar=null;
-                }
-               
-                
-      
+        int opcion=JOptionPane.showConfirmDialog(this, "Confirma Eliminación S/N", "Confirmación",JOptionPane.YES_NO_OPTION);
+        if(opcion==JOptionPane.YES_OPTION){
+            listaProductos.remove(auxiliar);
+            JOptionPane.showMessageDialog(this, "Producto Eliminado ");
+            limpiar();
+            auxiliar=null;
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
-
+    //IMPIDE EL INGRESO DEL CARACTER
     private void jtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyTyped
-        // TODO add your handling code here:
-            if(!Character.isDigit(evt.getKeyChar()) && !(evt.getKeyChar() == '.')){
+        if(!validarPrecio(jtPrecio.getText()+evt.getKeyChar())){
             evt.consume();
         }
-            
-        
     }//GEN-LAST:event_jtPrecioKeyTyped
+    //REMARCA EL ERROR
+    private void jtPrecioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtPrecioKeyReleased
+        if(jtPrecio.getText().matches("^([0-9]{1,10}(\\.[0-9]{1,2})?)$")){
+            jtPrecio.setForeground(BLACK);
+            
+        }else{
+            jtPrecio.setForeground(red);
+            
+        }
+    }//GEN-LAST:event_jtPrecioKeyReleased
 
-    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtCodigoActionPerformed
+    private void jtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtCodigoKeyTyped
+        if(!(jtCodigo.getText()+evt.getKeyChar()).matches("\\d{1,4}")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtCodigoKeyTyped
 
-    private void llenarCombo(){
-    
-        Rubro comestible=new Rubro(1,"Comestible");
-        Rubro limpieza=new Rubro(2,"Limpieza");
-        Rubro perfumeria=new Rubro(3,"Perfumeria");
-        
-        jcRubros.addItem(comestible);
-        jcRubros.addItem(limpieza);
-        jcRubros.addItem(perfumeria);
-        
-    }
+    private void jtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtStockKeyTyped
+        if(!(jtStock.getText()+evt.getKeyChar()).matches("\\d{1,10}")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtStockKeyTyped
 
-    private boolean validaEntero(String nro){
-    
-        Pattern patron=Pattern.compile("^[0-9]+$");
-        Matcher m=patron.matcher(nro);
-        return m.matches();
-    }
-
-//    private boolean validaReal(String nro){
-//    Pattern patron=Pattern.compile("^[0-9]+.[0-9]{2}$");
-//        Matcher m=patron.matcher(nro);
-//        return m.matches();
-//        
-//    }
-    
-    private void limpiar(){
-    
-        jtCodigo.setText("");
-        jtDescripcion.setText("");
-        jtPrecio.setText("");
-        jtStock.setText("");
-        jcRubros.setSelectedIndex(-1);
-        jbEliminar.setEnabled(false);
-        auxiliar=null;
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -364,4 +335,29 @@ public gestionDeProductos(TreeSet<Producto> lista) {
     private javax.swing.JTextField jtPrecio;
     private javax.swing.JTextField jtStock;
     // End of variables declaration//GEN-END:variables
+    
+    private boolean validarPrecio(String numFlotante) {
+        //Valida flotante con 1 o 2 digitos despues del punto o sin punto
+        return numFlotante.matches("^([0-9]{1,10}(\\.[0-9]{0,2})?)$");        
+    }
+    
+    private void llenarCombo(){    
+        Rubro comestible=new Rubro(1,"Comestible");
+        Rubro limpieza=new Rubro(2,"Limpieza");
+        Rubro perfumeria=new Rubro(3,"Perfumeria");
+        
+        jcRubros.addItem(comestible);
+        jcRubros.addItem(limpieza);
+        jcRubros.addItem(perfumeria);        
+    }
+
+    private void limpiar(){    
+        jtCodigo.setText("");
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+        jcRubros.setSelectedIndex(-1);
+        jbEliminar.setEnabled(false);
+        auxiliar=null;
+    }
 }
