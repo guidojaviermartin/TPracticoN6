@@ -164,7 +164,7 @@ private DefaultTableModel modelo=new DefaultTableModel();
               renglon.add(prod.getStock());
 
               modelo.addRow(renglon);
-                System.out.println(renglon);
+               // System.out.println(renglon);
             }
         }
         

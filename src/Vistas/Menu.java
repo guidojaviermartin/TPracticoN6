@@ -14,7 +14,7 @@ private TreeSet<Producto> listaProductos=new TreeSet<>();
 
     public Menu() {
         initComponents();
-        cargaDeProductos(listaProductos);
+       
     }
 
     @SuppressWarnings("unchecked")
@@ -179,15 +179,4 @@ private TreeSet<Producto> listaProductos=new TreeSet<>();
     }
     
     
-    private void cargaDeProductos(Collection lista){
-        lista.add(new Producto(1, "Leche x 1ltr", 1000.0,new Rubro(1,"Comestible"), 5));
-        lista.add(new Producto(2, "Galletitas Don Satur 250gr", 700.0,new Rubro(1,"Comestible"), 10));
-        lista.add(new Producto(3, "Manteca x 200gr", 1500.0,new Rubro(1,"Comestible"), 8));
-        lista.add(new Producto(4, "Trapo de piso", 2000.0,new Rubro(2,"Limpieza"), 2));
-        lista.add(new Producto(5, "Shampoo Sedal x 470gr", 7000.0,new Rubro(3,"Perfumeria"), 8));
-        lista.add(new Producto(6, "Lavandina x 1ltr", 800.0,new Rubro(2,"Limpieza"), 3));
-        lista.add(new Producto(7, "Dulce de Leche x 500gr", 2500.0,new Rubro(1,"Comestible"), 4));
-        lista.add(new Producto(8, "Jabon x 4", 700.0,new Rubro(3,"Perfumeria"), 0));
-        lista.add(new Producto(9, "Pasta dental x 300gr", 5000.0,new Rubro(3,"Perfumeria"), 15));
-    }
 }
